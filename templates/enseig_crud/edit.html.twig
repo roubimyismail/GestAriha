@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Enseignants{% endblock %}
+
+{% block body %}
+    <h1>Edit Enseignants</h1>
+
+    {{ include('enseig_crud/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_enseig_crud_index') }}">back to list</a>
+
+    {{ include('enseig_crud/_delete_form.html.twig') }}
+{% endblock %}

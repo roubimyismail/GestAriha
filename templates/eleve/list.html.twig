@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Eleves {% endblock %}
+
+{% block body %}
+   <link
+	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+	rel="stylesheet">
+    <div >
+       <a href="{{ path('app_eleve_ajout') }}" class="text-white bg-green-700 focus:outline-none  font-medium rounded-full text-sm px-5 py-2.5 text-center   dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 px-4"> Ajout Eleve </a>
+    </div> 
+<div class="flex items-center justify-center min-h-screen bg-gray-900">
+	   
+    <div class="col-span-16 h-96">
+		<div class="overflow-auto lg:overflow-visible ">
+			<table class="table text-gray-400 border-separate space-y-6 text-sm ">
+				<thead class="bg-gray-800 text-gray-500">
+					<tr>
+						<th class="p-3 ">Nom et Prénom</th>
+						<th class="p-3 text-left">Massare</th>
+						<th class="p-3 text-left ">Niveau</th>
+						<th class="p-3 text-left ">Classe</th>
+						<th class="p-3 text-left">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+                    {% for eleve in eleves %}
+                        <tr class="bg-gray-800">
+                            <td class="p-4">
+                                <div class="flex align-items-center">
+                                    <img class="rounded-full h-10 w-10  object-cover" src="{{asset('/uploads/images/')}}{{eleve.image}}" alt="unsplash image">
+                                    <div class="ml-2">
+                                        <div class=""> {{ eleve.lastname}} </div>
+                                        <div class="text-gray-500">{{ eleve.firstname}}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="p-3">
+                                {{ eleve.codemassar}}
+                            </td>
+                            <td class="p-3 font-bold">
+                                {{ eleve.niveau}}
+                            </td>
+                            <td class="p-3">
+                                <span class="bg-green-400 text-gray-50 rounded-md px-2">{{ eleve.classe}}</span>
+                            </td>
+
+                            <td class="p-3 ">
+                                <a href="{{ path('app_eleve_detail',{'id': eleve.id})}}" class="text-gray-400 hover:text-gray-100 mr-2">
+                                    <i class="material-icons-outlined text-base">visibility</i>
+                                </a>
+                                <a href="{{ path('app_eleve_edit', {'id': eleve.id})}}" class="text-gray-400 hover:text-gray-100  mx-2">
+                                    <i class="material-icons-outlined text-base">edit</i>
+                                </a>
+                                <a href="{{ path('app_eleve_delete', {'id': eleve.id})}}" class="text-gray-400 hover:text-gray-100  ml-2">
+                                    <i class="material-icons-round text-base">delete_outline</i>
+                                </a>
+                            </td>
+                        </tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+ 
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <main>
+            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+              <!-- Replace with your content -->
+              <div class="px-4 py-6 sm:px-0">
+                <div class="h-96 rounded-lg">
+                    
+                    {{ form_start(registrationForm) }}
+                      <span class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-96 ml-48 p-2.5 mb-2 dark:bg-green-100 dark:border-green-400" placeholder="Email" class="form-control"> {{ form_row(registrationForm.email) }} </span>
+                      <span class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-96 ml-48 p-2.5 mb-2 dark:bg-green-100 dark:border-green-400"> {{ form_row(registrationForm.firstname) }} </span>
+                      <span class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-96 ml-48 p-2.5 mb-2 dark:bg-green-100 dark:border-green-400"> {{ form_row(registrationForm.lastname) }} </span>
+                      <span class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-96 ml-48 p-2.5 mb-2 dark:bg-green-100 dark:border-green-400"> {{ form_row(registrationForm.address) }} </span>
+                      <span class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-96 ml-48 p-2.5 mb-2 dark:bg-green-100 dark:border-green-400"> {{ form_row(registrationForm.zipcode) }} </span>
+                      <span class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-96 ml-48 p-2.5 mb-2 dark:bg-green-100 dark:border-green-400"> {{ form_row(registrationForm.city) }} </span>
+                      <div class="form-group">
+                          <label class="control-label required">Type Users</label>
+                          {% for child in registrationForm.typeuser %}
+                              <div class="currency-label active">
+                                  <label for="{{ child.vars.id }}" class="required">
+                                      <input type="radio" id="{{ child.vars.id }}" name="{{ registrationForm.vars.id ~ '[' ~ registrationForm.typeuser.vars.name ~ ']' }}" required="required" class="checkbox" value="{{ child.vars.label }}">
+                                      {{ child.vars.label }}
+                                  </label>
+                              </div>
+                          {% endfor %}
+                      </div>
+                      <span class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-96 ml-48 p-2.5 mb-2 dark:bg-green-100 dark:border-green-400"> {{ form_row(registrationForm.plainPassword, {
+                            label: 'Password'
+                        }) }} </span>
+                      
+                      <span class="bg-green-50 border border-green-500 text-green-900 placeholder-green-700 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-96 ml-48 p-2.5 mb-4 dark:bg-green-100 dark:border-green-400">  {{ form_row(registrationForm.agreeTerms) }} </span>
+                      
+                      
+                        <button type="submit" class="ext-white bg-green-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mt-2 ml-48 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">M'inscrire</button>
+                        <a href="{{ path('app_login') }}" class="ext-white bg-green-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mt-2 ml-48 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Me Connecter</a>
+                    {{ form_end(registrationForm) }}
+                </div>
+              </div>
+              <!-- /End replace -->
+            </div>
+          </main>
+   
+{% endblock %}

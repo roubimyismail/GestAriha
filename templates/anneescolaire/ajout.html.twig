@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{titre}}{% endblock %}
+
+{% block body %}
+    <main>
+            <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+              <!-- Replace with your content -->
+              <div class="px-4 py-6 sm:px-0">
+                <div class="h-96 rounded-lg">
+                    
+                    {{ form_start(anneescolaireForm) }}
+                      <div  class="bg-green-50 border border-blue-500 text-black-900 placeholder-blue-700 text-sm rounded-lg focus:ring-yellow-500 focus:border-green-500 block w-96   p-2  dark:bg-green-100 dark:border-green-400" > {{ form_row(anneescolaireForm.annee) }} </div >
+                      
+                      <button type="submit" class="ext-white bg-green-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center   dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Ajout AnneeScolaire</button>
+                      <a href="{{ path('app_anneescolaire_list') }}" class="ext-white bg-green-700 focus:outline-none  font-medium rounded-full text-sm px-5 py-2.5 text-center   dark:bg-green-600 dark:hover:bg-green-400 dark:focus:ring-green-800 px-4"> Retour Liste AnneeScolaire </a>
+                        
+                    {{ form_end(anneescolaireForm) }}
+                </div>
+              </div>
+              <!-- /End replace -->
+            </div>
+          </main>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enseignants index{% endblock %}
+
+{% block body %}
+    <h1>Enseignants index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for enseignant in enseignants %}
+            <tr>
+                <td>{{ enseignant.id }}</td>
+                <td>{{ enseignant.firstname }}</td>
+                <td>{{ enseignant.lastname }}</td>
+                <td>{{ enseignant.image }}</td>
+                <td>
+                    <a href="{{ path('app_enseig_crud_show', {'id': enseignant.id}) }}">show</a>
+                    <a href="{{ path('app_enseig_crud_edit', {'id': enseignant.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_enseig_crud_new') }}">Create new</a>
+{% endblock %}
